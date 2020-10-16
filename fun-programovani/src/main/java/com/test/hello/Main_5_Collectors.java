@@ -10,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -35,8 +36,34 @@ public class Main_5_Collectors {
                 .collect(Collectors.joining(", "));
         System.out.println(dogNamesString);
 
+        System.out.println("************************");
+
+        Predicate<Path> predicateIsRegularFile = path -> Files.isRegularFile(path);
+        Predicate<Path> predicateIsntIdeaFile = path -> !path.toString().contains("\\.idea\\");
+        Predicate<Path> predicateIsntTargetFile = path -> !path.toString().contains("\\target\\");
+        Predicate<Path> predicateProjectFiles = predicateIsRegularFile.and(predicateIsntIdeaFile).and(predicateIsntTargetFile);
+
         try (Stream<Path> stream = Files.walk(Path.of("."))) {
-            stream.forEach(System.out::println);
+            // varianta 1
+//            stream
+//                    .filter(path -> Files.isRegularFile(path))
+//                    .filter(path -> !path.toString().contains("\\.idea\\"))
+//                    .filter(path -> !path.toString().contains("\\target\\"))
+//                    .forEach(System.out::println);
+            // varianta 2
+//            stream
+//                    .filter(predicateIsRegularFile)
+//                    .filter(predicateIsntIdeaFile)
+//                    .filter(predicateIsntTargetFile)
+//                    .forEach(System.out::println);
+            // varianta 3
+//            stream
+//                    .filter(predicateIsRegularFile.and(predicateIsntIdeaFile).and(predicateIsntTargetFile))
+//                    .forEach(System.out::println);
+            // varianta 4
+            stream
+                    .filter(predicateProjectFiles)
+                    .forEach(System.out::println);
         }
 
     }
