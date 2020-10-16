@@ -21,11 +21,23 @@ public class Main_7_CollectorsGroupingBy {
 //            System.out.println("adresare: " + map.get(Type.DIRECTORY));
 //            System.out.println("soubory:  " + map.get(Type.FILE));
 
-            Map<Type, List<String>> map = stream.collect
+//            Map<Type, List<String>> map = stream.collect
+//                    (Collectors.groupingBy(path -> Files.isDirectory(path) ? Type.DIRECTORY : Type.FILE,
+//                            Collectors.mapping(path -> path.toFile().getName(), Collectors.toList())));
+//            System.out.println("adresare: " + map.get(Type.DIRECTORY));
+//            System.out.println("soubory:  " + map.get(Type.FILE));
+
+//            Map<Type, Long> map = stream.collect
+//                    (Collectors.groupingBy(path -> Files.isDirectory(path) ? Type.DIRECTORY : Type.FILE,
+//                            Collectors.mapping(path -> path.toFile().getName(), Collectors.counting())));
+//            System.out.println("pocet adresaru: " + map.get(Type.DIRECTORY));
+//            System.out.println("pocet souboru:  " + map.get(Type.FILE));
+
+            Map<Type, String> map = stream.collect
                     (Collectors.groupingBy(path -> Files.isDirectory(path) ? Type.DIRECTORY : Type.FILE,
-                            Collectors.mapping(path -> path.toFile().getName(), Collectors.toList())));
-            System.out.println("adresare: " + map.get(Type.DIRECTORY));
-            System.out.println("soubory:  " + map.get(Type.FILE));
+                            Collectors.mapping(path -> path.toFile().getName(), Collectors.joining(", "))));
+            System.out.println("pocet adresaru: " + map.get(Type.DIRECTORY));
+            System.out.println("pocet souboru:  " + map.get(Type.FILE));
         }
     }
 
