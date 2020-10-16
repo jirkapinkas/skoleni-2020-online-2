@@ -23,7 +23,7 @@ public class Main_7_CollectorsGroupingBy {
 
             Map<Type, List<String>> map = stream.collect
                     (Collectors.groupingBy(path -> Files.isDirectory(path) ? Type.DIRECTORY : Type.FILE,
-                            Collectors.mapping(Path::getName, Collectors.toList())));
+                            Collectors.mapping(path -> path.toFile().getName(), Collectors.toList())));
             System.out.println("adresare: " + map.get(Type.DIRECTORY));
             System.out.println("soubory:  " + map.get(Type.FILE));
         }
