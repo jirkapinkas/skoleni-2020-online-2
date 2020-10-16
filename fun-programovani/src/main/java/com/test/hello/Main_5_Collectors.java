@@ -39,14 +39,6 @@ public class Main_5_Collectors {
             stream.forEach(System.out::println);
         }
 
-        // od Java 7
-        List<String> strings = Files.readAllLines(Path.of("pom.xml"), StandardCharsets.UTF_8);
-
-        // od Java 8
-        try (Stream<String> stream = Files.lines(Path.of("pom.xml"))) {
-            stream.forEach(System.out::println);
-        }
-
     }
 
 }

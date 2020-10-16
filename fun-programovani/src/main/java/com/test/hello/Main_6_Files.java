@@ -1,6 +1,7 @@
 package com.test.hello;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
@@ -10,6 +11,24 @@ import java.util.stream.Stream;
 public class Main_6_Files {
 
     public static void main(String[] args) throws IOException {
+        try (Stream<Path> stream = Files.walk(Path.of("."))) {
+            stream.forEach(System.out::println);
+        }
+        System.out.println("*********************");
+
+        // od Java 7
+        List<String> strings = Files.readAllLines(Path.of("pom.xml"), StandardCharsets.UTF_8);
+        strings.forEach(System.out::println);
+
+        System.out.println("*********************");
+
+        // od Java 8
+        try (Stream<String> stream = Files.lines(Path.of("pom.xml"))) {
+            stream.forEach(System.out::println);
+        }
+
+        System.out.println("*********************");
+
         try (Stream<Path> stream = Files.walk(Path.of("."))) {
             List<Path> result = stream
                     .filter(path -> path.toString().endsWith(".java"))
