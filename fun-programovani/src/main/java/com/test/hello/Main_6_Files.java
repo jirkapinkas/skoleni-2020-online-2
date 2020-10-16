@@ -39,6 +39,24 @@ public class Main_6_Files {
                     .forEach(System.out::println);
         }
 
+        System.out.println("*********************");
+
+        try (Stream<Path> stream = Files.walk(Path.of("."))) {
+            long sum = stream
+                    .filter(path -> !path.toString().contains("target"))
+                    .mapToLong(path -> fileSize(path))
+                    .sum();
+            System.out.println("velikost projektu: " + sum);
+        }
+
+    }
+
+    public static long fileSize(Path path) {
+        try {
+            return Files.size(path);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static boolean fileContainsText(Path path, String text) {
