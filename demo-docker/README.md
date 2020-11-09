@@ -1,6 +1,9 @@
 1. Spustit (databaze & pgadmin):
 
     docker-compose up
+    
+    
+POZNAMKA: "docker-compose up" se zavola v adresari, ve kterem je docker-compose.yml
 
 2. Spustit tridu DemoDockerApplication (timto se spusti databaze):
 
