@@ -1,0 +1,12 @@
+
+\
+java:S1854e":Remove this useless assignment to local variable "result".(½Œšûÿÿÿÿ8ÛŠõåÚ.
+]	java:S1253"<This block of commented-out lines of code should be removed.(ºÜ•£úÿÿÿÿ8ÜéÒåÚ.
+]	java:S125<"<This block of commented-out lines of code should be removed.(õâ²Øÿÿÿÿÿ8‡¡ÙåÚ.
+W	java:S125o"<This block of commented-out lines of code should be removed.(ËÑI8ÜğôåÚ.
+‚
+java:S1192P"eDefine a constant instead of duplicating this literal ".association2.propertyInAssociation2" 4 times.(Ûğ•8­¼ÚåÚ.
+”
+java:S1192U"rDefine a constant instead of duplicating this literal ".association2.association3.propertyInAssociation3" 5 times.(›úÅ¶úÿÿÿÿ8­¼ÚåÚ.
+j
+java:S1192P"MDefine a constant instead of duplicating this literal "association" 10 times.(Ûğ•8­¼ÚåÚ.
